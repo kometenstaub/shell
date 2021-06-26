@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# this script requires dtrx for unzipping the release
-
 # example URL for a repository: https://github.com/SkepticMystic/breadcrumbs
 
 # adjust the following three variables to your needs
@@ -13,11 +11,13 @@ PluginsPath='/<path to vault>/.obsidian/plugins/'
 
 URL='https://github.com/'$(curl -sL https://github.com/$Author/$PluginName/releases/latest | grep download*.*zip | cut -d '"' -f 2)
 
+echo 'The URL is:' $URL
+
 # move settings file one level up
-mv $PluginsPath/$PluginName/data.json $PluginsPath/
+mv $PluginsPath/$PluginName/data.json $PluginsPath/ && echo 'successfully moved the settings file one directory up'
 
 # cd into the plugin directory; download the newest release; remove the old plugin folder; unzip the release; remove the zip file
-cd $PluginsPath/ && curl -OJL $URL && rm -r $PluginName/ ; dtrx --one=here $PluginName*.zip && rm $PluginName*.zip
+cd $PluginsPath/ && curl -OJL $URL && rm -r $PluginName/ ; unzip $PluginName*.zip && rm $PluginName*.zip
 
 # move the settings file back
-mv $PluginsPath/data.json $PluginsPath/$PluginName/
+mv $PluginsPath/data.json $PluginsPath/$PluginName/ && echo 'successfully moved the settings file back'
