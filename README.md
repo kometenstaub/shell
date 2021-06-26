@@ -4,6 +4,8 @@ This is a collection of shell scripts.
 
 **Please, have backups and try out the script(s) in a test vault first!**
 
+Should you find any bugs, please open an issue.
+
 ## update_plugin
 
 This script is meant to facilitate updating plugins which are not in the Obsidian community plugin store. The developer might not have submitted the plugin or it is still in development before it is submitted.
