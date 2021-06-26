@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# this script requires dtrx for unzipping the release
+
+# example URL for a repository: https://github.com/SkepticMystic/breadcrumbs
+
+# adjust the following three variables to your needs
+# see the example URL for reference on how to fill in these variables
+Author='SkepticMystic'
+PluginName='breadcrumbs'
+# this is the path to the directory in the vault where your plugins are stored
+PluginsPath='/home/<username>/<path to vault>/.obsidian/plugins/'
+
+URL='https://github.com/'$(curl -sL https://github.com/$Author/$PluginName/releases/latest | grep download*.*zip | cut -d '"' -f 2)
+
+# move settings file one level up
+mv $PluginsPath/$PluginName/data.json $PluginsPath/
+
+# cd into the plugin directory; download the newest release and unzip it; remove the zip file
+cd $PluginsPath/ && curl -OJL $URL && rm -r $PluginName/ ; dtrx --one=here $PluginName-*.zip && rm $PluginName-*.zip
+
+# move the settings file back
+mv $PluginsPath/data.json $PluginsPath/$PluginName/
