@@ -12,6 +12,8 @@ This script is meant to facilitate updating plugins which are not in the Obsidia
 
 I created the script to make being a plugin beta tester easier. Currently, I have only tested it with the plugin you can find under the sample URL.
 
+It downloads the latest release.
+
 See the comments for more details.
 
 You may have to adjust the code slightly for the plugin you want to use it with.
