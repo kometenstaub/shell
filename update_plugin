@@ -9,7 +9,7 @@
 Author='SkepticMystic'
 PluginName='breadcrumbs'
 # this is the path to the directory in the vault where your plugins are stored
-PluginsPath='/home/<username>/<path to vault>/.obsidian/plugins/'
+PluginsPath='/<path to vault>/.obsidian/plugins/'
 
 URL='https://github.com/'$(curl -sL https://github.com/$Author/$PluginName/releases/latest | grep download*.*zip | cut -d '"' -f 2)
 
